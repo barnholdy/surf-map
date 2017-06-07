@@ -36,7 +36,6 @@ export default {
     var svgsToInject = document.querySelectorAll('img.inject-me')
     var options = {}
     SVGInjector(svgsToInject, options, function (totalSVGsInjected) {
-
     })
   },
   computed: {
