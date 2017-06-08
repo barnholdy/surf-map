@@ -14,21 +14,25 @@ export default {
     'src', // path relative to assets folder
     'width',
     'height',
-    'data',
-    'value'
+    'selectedLands'
   ],
+  data: function () {
+    return {
+      landClass: 'land'
+    }
+  },
   watch: {
-    value: function (value) {
-      console.log('value changed')
-      var i1 = this.data.indexOf(value[0])
-      var i2 = this.data.indexOf(value[1])
-      console.log(i1)
-      console.log(i2)
-      var de = document.getElementById('DE')
-      if (i1 <= 4 && i2 > 4 || i1 < 8 && i2 >= 8) {
-        de.setAttribute('class', 'land active')
-      } else {
-        de.setAttribute('class', 'land')
+    selectedLands: function (selectedLands) {
+      console.log(selectedLands)
+      var landElements = document.getElementsByClassName(this.landClass)
+      for (const landElement of landElements) {
+        landElement.setAttribute('class', this.landClass)
+      }
+      for (const selectedLand of selectedLands) {
+        var selectedLandElement = document.getElementById(selectedLand.id)
+        if (selectedLandElement != null) {
+          selectedLandElement.setAttribute('class', this.landClass + ' active')
+        }
       }
     }
   },
