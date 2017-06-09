@@ -37,7 +37,7 @@ export default {
   data () {
     return {
       months: ['jan', 'feb', 'march', 'april', 'may', 'june', 'july', 'aug', 'sept', 'oct', 'nov', 'dec'],
-      selectedMonths: ['jan', 'feb'],
+      selectedMonths: ['jan', 'dec'],
       lands: [],
       selectedLands: []
     }
@@ -51,6 +51,7 @@ export default {
   },
   mounted: function () {
     this.lands = conts
+    this.onSliderChanged(this.selectedMonths)
   }
 }
 </script>
