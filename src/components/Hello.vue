@@ -26,7 +26,7 @@
 import vueSlider from 'vue-slider-component'
 import MySvg from '@/components/MySvg'
 import SelectionService from '@/services/SelectionService'
-import conts from '@/assets/lands.csv'
+import conts from '@/assets/lands'
 
 export default {
   name: 'hello',
