@@ -25,6 +25,7 @@
 <script>
 import vueSlider from 'vue-slider-component'
 import MySvg from '@/components/MySvg'
+import SelectionService from '@/services/SelectionService'
 import conts from '@/assets/lands.csv'
 
 export default {
@@ -43,21 +44,9 @@ export default {
   },
   methods: {
     onSliderChanged: function (selectedMonths) {
-      var i1 = this.months.indexOf(selectedMonths[0]) + 1
-      var i2 = this.months.indexOf(selectedMonths[1]) + 1
-      var selected = []
-      for (const cont of this.lands) {
-        var el = document.getElementById(cont.id)
-        if (el != null) {
-          if (
-            (i1 <= cont.from && i2 > cont.from ||
-            i1 <= cont.to && i2 >= cont.to) && i1 !== i2
-          ) {
-            selected.push(cont)
-          }
-        }
-      }
-      this.selectedLands = selected
+      var fromMonth = this.months.indexOf(selectedMonths[0]) + 1
+      var toMonth = this.months.indexOf(selectedMonths[1]) + 1
+      this.selectedLands = SelectionService.getLandsForSeason(fromMonth, toMonth, this.lands)
     }
   },
   mounted: function () {
